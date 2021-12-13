@@ -1,0 +1,19 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> arr = new ArrayList<List<Integer>>();
+        solve(nums,arr,new ArrayList<Integer>());
+        return arr;
+    }
+    private void solve(int[] nums, List<List<Integer>> arr, List<Integer>currList){
+        if(currList.size() == nums.length){
+            arr.add(new ArrayList<Integer>(currList));
+        }
+        else{
+            for(int i=0;i<=currList.size();i++){
+                currList.add(i,nums[currList.size()]);
+                solve(nums,arr,currList);
+                currList.remove(i);
+            }
+        }
+    }
+}
