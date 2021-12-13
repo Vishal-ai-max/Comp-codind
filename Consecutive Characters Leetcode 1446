@@ -1,0 +1,22 @@
+class Solution {
+    public int maxPower(String s) {
+        if(s.length() == 0){
+            return 0;
+        }
+        char currS = ' ';
+        int currPo= 1;
+        int maxPo = 0;
+        for(int i=0;i<s.length();i++){
+            if(currS == s.charAt(i)){
+                //currS = s.charAt(i);
+                currPo++; 
+            }
+            else{
+                currPo = 1;
+            }
+            currS = s.charAt(i);
+            maxPo = Math.max(maxPo,currPo);
+        }
+        return maxPo;
+    }
+}
