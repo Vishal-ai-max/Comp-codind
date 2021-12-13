@@ -1,0 +1,22 @@
+class Solution {
+    public int trap(int[] height) {
+        int lp = 0;
+        int rp = height.length-1;
+        int lm = height[lp];
+        int rm = height[rp];
+        int w = 0;
+        while(lp<rp){
+            if(lm<=rm){
+                lp++;
+                lm = Math.max(lm,height[lp]);
+                w += lm - height[lp];
+            }
+            else{
+                rp--;
+                rm = Math.max(rm,height[rp]);
+                w += rm - height[rp];
+            }
+        }
+        return w;
+    }
+}
