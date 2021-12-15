@@ -1,0 +1,60 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        int r = matrix.length;
+        int c = matrix[0].length;
+        int direction = 1;
+        int i=0;int j=0;
+        int k = 0;
+        while(k != c*r){
+            ans.add(matrix[i][j]);
+            matrix[i][j] = 101;
+            k++;
+            if(direction == 1){
+                if(j+1<c && matrix[i][j+1] != 101){
+                    j = j+1;
+                    continue;
+                }
+                else{
+                    direction = 2;
+                    i = i+1;
+                    continue;
+                }
+            }
+            if(direction == 2){
+                if(i+1<r && matrix[i+1][j] != 101){
+                    i = i+1;
+                    continue;
+                }
+                else{
+                    direction = 3;
+                    j = j-1;
+                    continue;
+                }
+            }
+            if(direction == 3){
+                if(j-1>=0 && matrix[i][j-1] != 101){
+                    j = j-1;
+                    continue;
+                }
+                else{
+                    direction = 4;
+                    i = i-1;
+                    continue;
+                }
+            }
+            if(direction == 4){
+                if(i-1>=0 && matrix[i-1][j] != 101){
+                    i = i-1;
+                    continue;
+                }
+                else{
+                    direction = 1;
+                    j = j+1;
+                    continue;
+                }
+            }
+        } 
+        return ans;
+    }
+}
