@@ -1,0 +1,20 @@
+class Solution {
+    public int rob(TreeNode root) {
+        List<Integer> arr = helper(root);
+        return Math.max(arr.get(0),arr.get(1));
+    }
+    private List<Integer> helper(TreeNode root){
+        if(root == null){
+            List<Integer> nul = new ArrayList<>();
+            nul.add(0);
+            nul.add(0);
+            return nul; 
+        }
+        List<Integer> leftRoot = helper(root.left);
+        List<Integer> rightRoot = helper(root.right);
+        List<Integer> arr = new ArrayList<>(2);
+        arr.add(root.val+leftRoot.get(1)+rightRoot.get(1));
+        arr.add(Math.max(leftRoot.get(0),leftRoot.get(1))+Math.max(rightRoot.get(0),rightRoot.get(1)));
+        return arr;
+    }
+}
