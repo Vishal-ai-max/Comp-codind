@@ -1,0 +1,18 @@
+class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        int res = 0;
+        int[] temp = new int[60];
+        for(int i=0;i<time.length;i++){
+            temp[time[i]%60]++;
+        }
+        for(int j=0;j<=temp.length/2;j++){
+            if(j==0||j==30){
+                res+=(temp[j]*(temp[j]-1))/2;
+            }
+            else{
+                res+=temp[j]*temp[60-j];
+            }
+        }
+        return res;
+    }
+}
